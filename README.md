@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# GrindAtlas
 
 Game guides + interactive tools for idle, incremental, and roguelike games. English-language site monetized via Google AdSense.
@@ -92,3 +93,7 @@ scripts/             # deploy.ps1, deploy.sh
 - Balatro joker tier list
 - Cookie Clicker strategy
 - (more added weekly)
+=======
+# grindatlas
+grindatlas
+>>>>>>> 14940ec79f70844af8c48c847f25b177da5bb333
