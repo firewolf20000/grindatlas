@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 export default function IdleCalculator() {
   const [mode, setMode] = useState("time");
   const [current, setCurrent] = useState("1000");

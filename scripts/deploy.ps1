@@ -1,4 +1,4 @@
-﻿#Requires -Version 5.0
+#Requires -Version 5.0
 <#
 .SYNOPSIS
   Build and deploy GrindAtlas to Cloudflare Pages in one command.

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Universal Paperclips Walkthrough: From Phase 1 to the Endgame"
 description: "A complete walkthrough of Universal Paperclips covering every phase, the key decisions, and the strategies that get you to the end credits fastest."
 category: "idle-games"

@@ -1,4 +1,4 @@
-﻿import { SITE } from './seo';
+import { SITE } from './seo';
 
 export function websiteSchema() {
   return {

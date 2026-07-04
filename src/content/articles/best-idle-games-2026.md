@@ -1,4 +1,4 @@
-﻿---
+---
 title: "The 12 Best Idle Games to Play in 2026 (Free & Paid)"
 description: "A hand-picked, regularly updated list of the best idle and incremental games you can play right now, covering web, Steam, and mobile."
 category: "idle-games"

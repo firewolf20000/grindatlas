@@ -1,4 +1,4 @@
-﻿export interface SeoMeta {
+export interface SeoMeta {
   title: string;
   description: string;
   canonical?: string;

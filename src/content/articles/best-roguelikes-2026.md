@@ -1,4 +1,4 @@
-﻿---
+---
 title: "10 Best Roguelike & Roguelite Games to Play in 2026"
 description: "Our updated list of the best roguelike and roguelite games you can play right now, from deckbuilders to action roguelikes to bullet hells."
 category: "roguelikes"

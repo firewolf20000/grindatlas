@@ -1,4 +1,4 @@
-﻿---
+---
 name: Bug report
 about: Something is broken on the site
 title: "[bug] "

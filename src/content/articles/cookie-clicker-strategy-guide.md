@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Cookie Clicker Strategy: The Optimal Order to Buy Everything"
 description: "Our data-driven Cookie Clicker strategy guide: the best buildings to buy, when to ascend, the optimal Heavenly Chips strategy, and more."
 category: "idle-games"

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Balatro Joker Tier List: The Best and Worst Jokers (2026 Patch)"
 description: "Our updated 2026 tier list of every Joker in Balatro, with rankings for each staking level and the best Joker combos for every boss blind."
 category: "roguelikes"
