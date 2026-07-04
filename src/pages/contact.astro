@@ -1,0 +1,20 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../utils/seo';
+---
+<BaseLayout title="Contact" description={`Get in touch with the ${SITE.name} team.`}>
+  <div class="container-prose py-12 prose-custom">
+    <h1>Contact</h1>
+    <p>We read every message. The fastest way to reach us is by email.</p>
+    <p><strong>Email:</strong> hello@grindatlas.com</p>
+    <h2>What to contact us about</h2>
+    <ul>
+      <li>Corrections to a guide or tier list</li>
+      <li>Game suggestions we should cover</li>
+      <li>Tool ideas or feature requests</li>
+      <li>Partnerships and press inquiries</li>
+    </ul>
+    <h2>Response time</h2>
+    <p>We typically respond within 3 business days. We do not offer individual gameplay support; please use the relevant game's official community for that.</p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,23 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../utils/seo';
+const updated = '2026-07-01';
+---
+<BaseLayout title="Disclaimer" description={`${SITE.name} disclaimer and legal information.`}>
+  <div class="container-prose py-12 prose-custom">
+    <h1>Disclaimer</h1>
+    <p><em>Last updated: {updated}</em></p>
+    <h2>1. Information accuracy</h2>
+    <p>The content on {SITE.name} is provided for general informational purposes only. While we strive to keep game information up to date, patch notes and mechanics change frequently. Always verify strategies against the current version of the game you are playing.</p>
+    <h2>2. No warranty</h2>
+    <p>All content is provided "as is" without any representations or warranties, express or implied. We make no representations or warranties about the accuracy or completeness of any information on {SITE.name} or related links.</p>
+    <h2>3. Trademarks and copyrights</h2>
+    <p>All game titles, characters, artwork, and trademarks referenced on {SITE.name} are the property of their respective owners. {SITE.name} is a fan-made guide site and is not affiliated with, endorsed by, or sponsored by the developers of any game listed.</p>
+    <h2>4. External links</h2>
+    <p>{SITE.name} may contain links to external websites. We are not responsible for the content or practices of third-party sites.</p>
+    <h2>5. Tools</h2>
+    <p>Interactive tools on this site produce mathematical estimates. They do not modify game data, connect to game servers, or interact with the games themselves in any way.</p>
+    <h2>6. Limitation of liability</h2>
+    <p>Under no circumstance shall {SITE.name} be liable for any loss or damage arising from your use of the site.</p>
+  </div>
+</BaseLayout>

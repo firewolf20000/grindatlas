@@ -1,0 +1,42 @@
+﻿---
+interface Props {
+  slot?: 'top' | 'middle' | 'bottom' | 'sidebar';
+  format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
+}
+const { slot = 'middle', format = 'auto' } = Astro.props;
+const pubId = 'ca-pub-XXXXXXXXXXXXXXXX'; // 替换为真实 AdSense 发布商 ID
+const adSlotId = {
+  top: '1111111111',
+  middle: '2222222222',
+  bottom: '3333333333',
+  sidebar: '4444444444',
+}[slot];
+---
+<aside class="ad-slot my-6 not-prose" data-slot={slot} data-format={format} aria-label="Advertisement">
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client={pubId}
+    data-ad-slot={adSlotId}
+    data-ad-format={format}
+    data-full-width-responsive="true"></ins>
+  <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</aside>
+
+<script is:inline define:vars={{ pubId }}>
+  // 仅在用户同意 Cookie 后加载 adsbygoogle
+  (function () {
+    function load() {
+      if (document.getElementById('adsbygoogle-js')) return;
+      var s = document.createElement('script');
+      s.id = 'adsbygoogle-js';
+      s.async = true;
+      s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + pubId;
+      s.crossOrigin = 'anonymous';
+      document.head.appendChild(s);
+    }
+    try {
+      if (localStorage.getItem('ga_consent') === 'granted') load();
+      else window.addEventListener('cookie-consent-granted', load, { once: true });
+    } catch (e) { load(); }
+  })();
+</script>

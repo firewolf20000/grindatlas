@@ -1,0 +1,10 @@
+﻿{
+  "name": "Slay the Spire 2",
+  "slug": "slay-the-spire-2",
+  "category": "roguelike",
+  "developer": "Mega Crit",
+  "releaseYear": 2025,
+  "platforms": ["Steam", "Epic"],
+  "shortDescription": "The sequel to the genre-defining deckbuilding roguelike. New characters, new cards, new relics, and reworked mechanics.",
+  "tags": ["deckbuilder", "roguelike", "indie", "early-access"]
+}

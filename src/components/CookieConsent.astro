@@ -1,0 +1,31 @@
+﻿---
+---
+<div id="cookie-banner" class="hidden fixed inset-x-0 bottom-0 z-50 p-4">
+  <div class="mx-auto max-w-3xl rounded-xl border border-ink-200 bg-white shadow-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+    <p class="text-sm text-ink-700 flex-1">
+      We use cookies for analytics and personalized ads. By clicking "Accept", you consent to our use of cookies.
+      Read our <a href="/privacy-policy" class="underline">Privacy Policy</a>.
+    </p>
+    <div class="flex gap-2">
+      <button id="cookie-decline" class="px-3 py-1.5 text-sm rounded-lg border border-ink-300 text-ink-700 hover:bg-ink-50">Decline</button>
+      <button id="cookie-accept" class="btn">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    var consent = null;
+    try { consent = localStorage.getItem('ga_consent'); } catch (e) {}
+    if (!consent) banner.classList.remove('hidden');
+    function decide(value) {
+      try { localStorage.setItem('ga_consent', value); } catch (e) {}
+      banner.classList.add('hidden');
+      if (value === 'granted') window.dispatchEvent(new Event('cookie-consent-granted'));
+    }
+    document.getElementById('cookie-accept')?.addEventListener('click', function () { decide('granted'); });
+    document.getElementById('cookie-decline')?.addEventListener('click', function () { decide('denied'); });
+  })();
+</script>

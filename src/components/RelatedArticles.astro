@@ -1,0 +1,26 @@
+﻿---
+import { getCollection } from 'astro:content';
+interface Props {
+  category: string;
+  currentTitle: string;
+}
+const { category, currentTitle } = Astro.props;
+const all = await getCollection('articles', (a) => a.data.category === category);
+const related = all
+  .filter((a) => a.data.title !== currentTitle)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 3);
+---
+{related.length > 0 && (
+  <section class="mt-12 border-t border-ink-200 pt-8">
+    <h2 class="text-2xl font-bold mb-4">More {category.replace('-', ' ')} guides</h2>
+    <div class="grid sm:grid-cols-3 gap-4">
+      {related.map((a) => (
+        <a href={`/${a.data.category}/${a.slug}`} class="card block p-4 no-underline hover:no-underline">
+          <h3 class="font-semibold text-ink-900 mb-1">{a.data.title}</h3>
+          <p class="text-sm text-ink-600 line-clamp-2">{a.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

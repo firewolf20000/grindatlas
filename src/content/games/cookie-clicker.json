@@ -1,0 +1,10 @@
+﻿{
+  "name": "Cookie Clicker",
+  "slug": "cookie-clicker",
+  "category": "incremental",
+  "developer": "Orteil",
+  "releaseYear": 2013,
+  "platforms": ["Web", "Steam", "Mobile"],
+  "shortDescription": "The genre-defining idle game: click a cookie, bake billions, then ascend and do it all over again with permanent prestige bonuses.",
+  "tags": ["incremental", "cookies", "classic", "free", "browser"]
+}

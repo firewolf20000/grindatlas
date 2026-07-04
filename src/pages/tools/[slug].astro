@@ -1,0 +1,41 @@
+﻿---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import IdleCalculator from '../../components/tools/IdleCalculator.tsx';
+import { softwareAppSchema } from '../../utils/schema';
+import { buildCanonical } from '../../utils/seo';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  return tools.map((t) => ({ params: { slug: t.data.slug }, props: { tool: t } }));
+}
+
+const { tool } = Astro.props;
+const url = buildCanonical(`/tools/${tool.data.slug}`);
+const swSchema = softwareAppSchema({
+  name: tool.data.name,
+  description: tool.data.description,
+  url,
+});
+
+const componentMap: Record<string, any> = {
+  'idle-progression-calculator': IdleCalculator,
+};
+const ToolComponent = componentMap[tool.data.slug];
+---
+<BaseLayout title={tool.data.name} description={tool.data.description} canonical={url}>
+  <div class="container-prose py-10">
+    <nav class="text-sm text-ink-500"><a href="/" class="hover:text-brand-700 no-underline">Home</a> / <a href="/tools" class="hover:text-brand-700 no-underline">Tools</a> / {tool.data.name}</nav>
+    <div class="mt-4 flex items-center gap-3">
+      <span class="text-4xl">{tool.data.icon}</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-ink-900">{tool.data.name}</h1>
+    </div>
+    <p class="mt-2 text-ink-600">{tool.data.description}</p>
+  </div>
+  <div class="container-prose pb-4">
+    {ToolComponent ? <ToolComponent client:load /> : <p class="text-ink-500">Tool component under construction.</p>}
+  </div>
+  <AdSlot slot="bottom" />
+  <script type="application/ld+json" set:html={JSON.stringify(swSchema)} />
+</BaseLayout>

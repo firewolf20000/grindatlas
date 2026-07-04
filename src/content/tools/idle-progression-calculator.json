@@ -1,0 +1,8 @@
+﻿{
+  "name": "Idle Progression Calculator",
+  "slug": "idle-progression-calculator",
+  "description": "Calculate time-to-target, required production rate, or projected growth for any idle or incremental game. Supports compound growth.",
+  "category": "calculator",
+  "icon": "⏱️",
+  "relatedGames": ["cookie-clicker", "universal-paperclips", "antimatter-dimensions"]
+}

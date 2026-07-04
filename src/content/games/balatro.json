@@ -1,0 +1,10 @@
+﻿{
+  "name": "Balatro",
+  "slug": "balatro",
+  "category": "roguelike",
+  "developer": "LocalThunk",
+  "releaseYear": 2024,
+  "platforms": ["Steam", "PS5", "Xbox", "Switch", "Mobile"],
+  "shortDescription": "A poker-themed roguelike deckbuilder where you build hands of cards, buy jokers with game-breaking synergies, and climb eight antes of escalating difficulty.",
+  "tags": ["deckbuilder", "poker", "roguelike", "indie", "award-winning"]
+}

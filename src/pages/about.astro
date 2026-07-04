@@ -1,0 +1,27 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../utils/seo';
+---
+<BaseLayout title={`About ${SITE.name}`} description={`About ${SITE.name}: who we are and how we write game guides.`}>
+  <div class="container-prose py-12 prose-custom">
+    <h1>About {SITE.name}</h1>
+    <p>{SITE.name} is an English-language guide site for idle, incremental, and roguelike games. We publish data-driven strategy content and interactive tools that help players make better decisions, faster.</p>
+    <h2>What we cover</h2>
+    <ul>
+      <li><strong>Idle / Incremental</strong> — Cookie Clicker, Universal Paperclips, Antimatter Dimensions, and other genre-defining titles.</li>
+      <li><strong>Roguelike</strong> — Balatro, Hades 2, Slay the Spire 2, Brotato, and similar deck / action roguelikes.</li>
+      <li><strong>Tools</strong> — Calculators, tier list generators, and optimizers built around real game data.</li>
+    </ul>
+    <h2>How we work</h2>
+    <p>Every guide is built around three pillars:</p>
+    <ol>
+      <li><strong>Accuracy</strong> — Information is cross-referenced with patch notes and the community wiki for the game.</li>
+      <li><strong>Usefulness</strong> — We focus on actionable advice, not filler.</li>
+      <li><strong>Originality</strong> — No copied text, no spun articles, no AI-generated fluff.</li>
+    </ol>
+    <h2>Editorial independence</h2>
+    <p>Our reviews and tier lists are never paid for. If we use affiliate links (clearly marked), they never influence our rankings or recommendations.</p>
+    <h2>Contact</h2>
+    <p>Suggestions, corrections, or partnership inquiries: see the <a href="/contact">contact page</a>.</p>
+  </div>
+</BaseLayout>

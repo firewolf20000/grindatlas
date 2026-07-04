@@ -1,0 +1,19 @@
+﻿---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
+
+const tools = await getCollection('tools');
+---
+<BaseLayout title="Interactive Tools" description="Free interactive tools for idle, incremental, and roguelike game players.">
+  <div class="container-wide py-10">
+    <nav class="text-sm text-ink-500"><a href="/" class="hover:text-brand-700 no-underline">Home</a> / Tools</nav>
+    <h1 class="mt-4 text-3xl sm:text-4xl font-extrabold text-ink-900">Interactive Tools</h1>
+    <p class="mt-2 text-ink-600 max-w-2xl">Calculators, optimizers, and generators built around real game data. No login required, runs entirely in your browser.</p>
+  </div>
+  <AdSlot slot="top" />
+  <div class="container-wide pb-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {tools.map((t) => <ToolCard name={t.data.name} slug={t.data.slug} description={t.data.description} icon={t.data.icon} />)}
+  </div>
+</BaseLayout>

@@ -1,0 +1,47 @@
+﻿---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEOMeta from '../components/SEOMeta.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import { websiteSchema, organizationSchema } from '../utils/schema';
+import { SITE } from '../utils/seo';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const { title, description, canonical, image, type = 'website', noindex = false } = Astro.props;
+const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
+const webSchema = websiteSchema();
+const orgSchema = organizationSchema();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical ?? new URL(Astro.url.pathname, SITE.url).toString()} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagservices.com" />
+    <SEOMeta title={fullTitle} description={description} image={image} type={type} noindex={noindex} />
+    <script type="application/ld+json" set:html={JSON.stringify(webSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <CookieConsent />
+  </body>
+</html>

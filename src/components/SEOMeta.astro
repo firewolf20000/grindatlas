@@ -1,0 +1,29 @@
+﻿---
+import { SITE } from '../utils/seo';
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+const { title, description, image, type = 'website', noindex = false } = Astro.props;
+const ogImage = image ?? '/og-default.png';
+const url = new URL(Astro.url.pathname, SITE.url).toString();
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex,nofollow" />}
+<meta name="theme-color" content="#7c3aed" />
+<meta property="og:type" content={type} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={new URL(ogImage, SITE.url).toString()} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content={SITE.locale} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={SITE.twitter} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(ogImage, SITE.url).toString()} />

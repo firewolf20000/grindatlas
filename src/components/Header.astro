@@ -1,0 +1,33 @@
+﻿---
+import { SITE } from '../utils/seo';
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/idle-games', label: 'Idle Games' },
+  { href: '/roguelikes', label: 'Roguelikes' },
+  { href: '/tools', label: 'Tools' },
+  { href: '/about', label: 'About' },
+];
+---
+<header class="border-b border-ink-200 bg-white/90 backdrop-blur sticky top-0 z-40">
+  <div class="container-wide flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2 font-extrabold text-lg text-ink-900 no-underline">
+      <img src="/favicon.svg" width="28" height="28" alt="" />
+      <span>{SITE.name}</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+      {nav.map((n) => (
+        <a href={n.href} class:list={["no-underline hover:text-brand-700", path.startsWith(n.href) ? "text-brand-700" : "text-ink-700"]}>{n.label}</a>
+      ))}
+    </nav>
+    <div class="md:hidden">
+      <details class="relative">
+        <summary class="list-none cursor-pointer p-2 text-2xl select-none">☰</summary>
+        <div class="absolute right-0 mt-2 w-48 rounded-lg border border-ink-200 bg-white shadow-lg p-2 z-50">
+          {nav.map((n) => (
+            <a href={n.href} class="block px-3 py-2 rounded hover:bg-ink-50 no-underline text-ink-700">{n.label}</a>
+          ))}
+        </div>
+      </details>
+    </div>
+  </div>
+</header>

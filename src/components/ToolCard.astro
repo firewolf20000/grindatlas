@@ -1,0 +1,15 @@
+﻿---
+interface Props {
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+}
+const { name, slug, description, icon } = Astro.props;
+---
+<a href={`/tools/${slug}`} class="card block p-5 no-underline hover:no-underline">
+  <div class="text-3xl mb-2">{icon}</div>
+  <h3 class="text-lg font-bold text-ink-900 mb-1">{name}</h3>
+  <p class="text-sm text-ink-600 line-clamp-3">{description}</p>
+  <span class="mt-3 inline-block text-sm font-semibold text-brand-700">Open tool →</span>
+</a>

@@ -1,0 +1,10 @@
+﻿{
+  "name": "Universal Paperclips",
+  "slug": "universal-paperclips",
+  "category": "incremental",
+  "developer": "Frank Lantz",
+  "releaseYear": 2017,
+  "platforms": ["Web"],
+  "shortDescription": "A deceptively deep incremental game about manufacturing paperclips, which gradually unfolds into a story about the fate of the universe.",
+  "tags": ["incremental", "narrative", "browser", "free"]
+}

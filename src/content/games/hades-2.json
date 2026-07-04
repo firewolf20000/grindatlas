@@ -1,0 +1,10 @@
+﻿{
+  "name": "Hades II",
+  "slug": "hades-2",
+  "category": "roguelike",
+  "developer": "Supergiant Games",
+  "releaseYear": 2024,
+  "platforms": ["Steam", "Epic"],
+  "shortDescription": "The sequel to the award-winning action roguelike, with new weapons, new gods, and an even deeper meta-progression system.",
+  "tags": ["action", "roguelike", "mythology", "indie"]
+}
