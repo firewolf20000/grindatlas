@@ -1,6 +1,7 @@
-name = "grindatlas"
-compatibility_date = "2025-01-15"
-pages_build_output_dir = "./dist"
+# Cloudflare Pages configuration (no longer uses wrangler deploy)
+# Cloudflare Pages auto-deploys from the build output directory.
+# Only used for: `npx wrangler pages dev` (local preview) and `wrangler pages deploy` (manual deploy).
 
-[build]
-command = "npm run build"
+name = "grindatlas"
+compatibility_date = "2026-07-01"
+pages_build_output_dir = "./dist"
