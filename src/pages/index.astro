@@ -6,11 +6,16 @@ import ToolCard from '../components/ToolCard.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { SITE } from '../utils/seo';
 
-const articles = await getCollection('articles', (a) => a.data.featured);
 const allArticles = await getCollection('articles');
-const recent = allArticles.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()).slice(0, 6);
+const recent = allArticles
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
 const games = await getCollection('games');
 const tools = await getCollection('tools');
+
+function slugify(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
 ---
 <BaseLayout title={SITE.name} description={SITE.description}>
   <section class="bg-gradient-to-br from-brand-700 via-brand-600 to-brand-500 text-white">
@@ -33,7 +38,7 @@ const tools = await getCollection('tools');
   <section class="container-wide py-12">
     <div class="flex items-end justify-between mb-6">
       <h2 class="text-2xl font-bold">Featured guides</h2>
-      <a href="/idle-games" class="text-sm font-semibold text-brand-700">All guides -></a>
+      <a href="/idle-games" class="text-sm font-semibold text-brand-700">All guides -&gt;</a>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {recent.map((a) => (
@@ -52,10 +57,12 @@ const tools = await getCollection('tools');
     <div class="container-wide">
       <div class="flex items-end justify-between mb-6">
         <h2 class="text-2xl font-bold">Interactive tools</h2>
-        <a href="/tools" class="text-sm font-semibold text-brand-700">All tools -></a>
+        <a href="/tools" class="text-sm font-semibold text-brand-700">All tools -&gt;</a>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tools.map((t) => <ToolCard name={t.data.name} slug={t.data.slug} description={t.data.description} icon={t.data.icon} />)}
+        {tools.map((t) => (
+          <ToolCard name={t.data.name} slug={t.data.slug} description={t.data.description} icon={t.data.icon} />
+        ))}
       </div>
     </div>
   </section>
@@ -63,7 +70,22 @@ const tools = await getCollection('tools');
   <section class="container-wide py-12">
     <h2 class="text-2xl font-bold mb-6">Games we cover</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {games.map((g) => <GameCard name={g.data.name} slug={g.data.slug} category={g.data.category === 'idle' || g.data.category === 'incremental' ? 'idle-games' : g.data.category === 'roguelike' ? 'roguelikes' : 'general'} shortDescription={g.data.shortDescription} />)}
+      {games.map((g) => {
+        const slug = g.data.slug;
+        const article = allArticles.find((a) => a.data.game && slugify(a.data.game) === slug);
+        const href = article
+          ? `/${article.data.category}/${article.slug}`
+          : `/${g.data.category === 'idle' || g.data.category === 'incremental' ? 'idle-games' : g.data.category === 'roguelike' ? 'roguelikes' : 'idle-games'}`;
+        return (
+          <GameCard
+            name={g.data.name}
+            slug={slug}
+            category={g.data.category === 'idle' || g.data.category === 'incremental' ? 'idle-games' : g.data.category === 'roguelike' ? 'roguelikes' : 'general'}
+            shortDescription={g.data.shortDescription}
+            href={href}
+          />
+        );
+      })}
     </div>
   </section>
 </BaseLayout>
