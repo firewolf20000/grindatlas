@@ -13,6 +13,7 @@ jobs:
   build-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       deployments: write
@@ -20,13 +21,23 @@ jobs:
       name: production
       url: ${{ steps.deploy.outputs.deployment-url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
           cache: npm
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_OPTIONS: "--max-old-space-size=2048"
+
       - name: Publish to Cloudflare Pages
         id: deploy
         uses: cloudflare/pages-action@v1
@@ -36,3 +47,13 @@ jobs:
           projectName: grindatlas
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Production branch only
+          branch: main
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "## 🎉 Deploy succeeded" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 Live at: ${{ steps.deploy.outputs.deployment-url }}" >> $GITHUB_STEP_SUMMARY
+          echo "📅 Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
