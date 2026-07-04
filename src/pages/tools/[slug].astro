@@ -18,11 +18,6 @@ const swSchema = softwareAppSchema({
   description: tool.data.description,
   url,
 });
-
-const componentMap: Record<string, any> = {
-  'idle-progression-calculator': IdleCalculator,
-};
-const ToolComponent = componentMap[tool.data.slug];
 ---
 <BaseLayout title={tool.data.name} description={tool.data.description} canonical={url}>
   <div class="container-prose py-10">
@@ -34,7 +29,10 @@ const ToolComponent = componentMap[tool.data.slug];
     <p class="mt-2 text-ink-600">{tool.data.description}</p>
   </div>
   <div class="container-prose pb-4">
-    {ToolComponent ? <ToolComponent client:load /> : <p class="text-ink-500">Tool component under construction.</p>}
+    {tool.data.slug === 'idle-progression-calculator' && <IdleCalculator client:load />}
+    {tool.data.slug !== 'idle-progression-calculator' && (
+      <p class="text-ink-500">Tool component under construction.</p>
+    )}
   </div>
   <AdSlot slot="bottom" />
   <script type="application/ld+json" set:html={JSON.stringify(swSchema)} />
