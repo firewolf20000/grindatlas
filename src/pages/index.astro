@@ -13,7 +13,7 @@ const recent = allArticles
 const games = await getCollection('games');
 const tools = await getCollection('tools');
 
-function slugify(s) {
+function slugify(s: string) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 ---
@@ -33,7 +33,7 @@ function slugify(s) {
     </div>
   </section>
 
-  <AdSlot slot="top" />
+  <AdSlot position="top" />
 
   <section class="container-wide py-12">
     <div class="flex items-end justify-between mb-6">
@@ -51,7 +51,7 @@ function slugify(s) {
     </div>
   </section>
 
-  <AdSlot slot="middle" />
+  <AdSlot position="middle" />
 
   <section class="bg-ink-50 py-12">
     <div class="container-wide">

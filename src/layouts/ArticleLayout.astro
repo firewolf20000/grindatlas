@@ -4,7 +4,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import AdSlot from '../components/AdSlot.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import { articleSchema, breadcrumbSchema } from '../utils/schema';
-import { SITE, buildCanonical } from '../utils/seo';
+import { buildCanonical } from '../utils/seo';
 
 interface Props {
   title: string;
@@ -50,16 +50,16 @@ const crumbsLd = breadcrumbSchema(crumbs);
       <p class="mt-3 text-lg text-ink-600">{description}</p>
       <div class="mt-4 text-sm text-ink-500 flex flex-wrap gap-3">
         <span>By {author ?? 'GrindAtlas Editors'}</span>
-        <span>·</span>
+        <span>闂?/span>
         <time datetime={pubDate.toISOString()}>{pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
         {updatedDate && <>
-          <span>·</span>
+          <span>闂?/span>
           <span>Updated <time datetime={updatedDate.toISOString()}>{updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time></span>
         </>}
       </div>
     </header>
 
-    <AdSlot slot="top" />
+    <AdSlot position="top" />
 
     <div class="prose-custom mt-8">
       <slot />
@@ -79,12 +79,12 @@ const crumbsLd = breadcrumbSchema(crumbs);
       </section>
     )}
 
-    <AdSlot slot="bottom" />
+    <AdSlot position="bottom" />
 
     <RelatedArticles category={category} currentTitle={title} />
   </article>
 
   <script type="application/ld+json" set:html={JSON.stringify(article)} />
   <script type="application/ld+json" set:html={JSON.stringify(crumbsLd)} />
-  {faq && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) })} />}
+  {faq && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map((x) => ({ '@type': 'Question', name: x.q, acceptedAnswer: { '@type': 'Answer', text: x.a } })) })} />
 </BaseLayout>

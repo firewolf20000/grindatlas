@@ -19,7 +19,7 @@ const listSchema = itemListSchema('Best Idle Game Guides', articles.map((a, i) =
     <h1 class="mt-4 text-3xl sm:text-4xl font-extrabold text-ink-900">Idle Game Guides</h1>
     <p class="mt-2 text-ink-600 max-w-2xl">Walkthroughs, optimal strategies, and progression tips for the best idle and incremental games on the web.</p>
   </div>
-  <AdSlot slot="top" />
+  <AdSlot position="top" />
   <div class="container-wide pb-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {articles.map((a) => (
       <a href={`/idle-games/${a.slug}`} class="card block p-5 no-underline hover:no-underline">

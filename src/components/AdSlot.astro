@@ -1,18 +1,18 @@
 ---
 interface Props {
-  slot?: 'top' | 'middle' | 'bottom' | 'sidebar';
+  position?: 'top' | 'middle' | 'bottom' | 'sidebar';
   format?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
 }
-const { slot = 'middle', format = 'auto' } = Astro.props;
-const pubId = 'ca-pub-XXXXXXXXXXXXXXXX'; // 替换为真实 AdSense 发布商 ID
+const { position = 'middle', format = 'auto' } = Astro.props;
+const pubId = 'ca-pub-XXXXXXXXXXXXXXXX';
 const adSlotId = {
   top: '1111111111',
   middle: '2222222222',
   bottom: '3333333333',
   sidebar: '4444444444',
-}[slot];
+}[position];
 ---
-<aside class="ad-slot my-6 not-prose" data-slot={slot} data-format={format} aria-label="Advertisement">
+<aside class="ad-slot my-6" data-position={position} data-format={format} aria-label="Advertisement">
   <ins class="adsbygoogle"
     style="display:block"
     data-ad-client={pubId}
@@ -23,7 +23,6 @@ const adSlotId = {
 </aside>
 
 <script is:inline define:vars={{ pubId }}>
-  // 仅在用户同意 Cookie 后加载 adsbygoogle
   (function () {
     function load() {
       if (document.getElementById('adsbygoogle-js')) return;
