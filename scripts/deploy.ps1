@@ -24,6 +24,6 @@ if (-not (Get-Command wrangler -ErrorAction SilentlyContinue)) {
 }
 
 Write-Host "==> Deploying to Cloudflare Pages" -ForegroundColor Cyan
-wrangler pages deploy ./dist --project-name=grindatlas --commit-dirty=true
+wrangler pages deploy ./dist --project-name=grindatlas1 --commit-dirty=true
 
 Write-Host "==> Done!" -ForegroundColor Green

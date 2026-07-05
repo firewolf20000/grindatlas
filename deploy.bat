@@ -79,7 +79,7 @@ echo.
 echo [deploy] Deploying to Cloudflare Pages (project: grindatlas)...
 echo [deploy] This may take 1-2 minutes...
 echo.
-call npx wrangler pages deploy ./dist --project-name=grindatlas --commit-dirty=true
+call npx wrangler pages deploy ./dist --project-name=grindatlas1 --commit-dirty=true
 if errorlevel 1 (
   echo.
   echo [deploy] DEPLOY FAILED. Check your token and account ID.

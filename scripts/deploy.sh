@@ -6,5 +6,5 @@ npm ci
 echo "==> Building"
 npm run build
 echo "==> Deploying to Cloudflare Pages"
-npx --yes wrangler pages deploy ./dist --project-name=grindatlas --commit-dirty=true
+npx --yes wrangler pages deploy ./dist --project-name=grindatlas1 --commit-dirty=true
 echo "==> Done!"
