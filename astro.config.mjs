@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://grindatlas.com',
+  site: 'https://www.15115656.xyz',
   trailingSlash: 'ignore',
   integrations: [
     tailwind({ applyBaseStyles: false }),
