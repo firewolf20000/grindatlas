@@ -1,5 +1,101 @@
+# GrindAtlas - https://www.15115656.xyz
+# Allow all major crawlers including AI search and training bots.
+
+# Traditional search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-image
+Allow: /
+
+User-agent: Baiduspider-video
+Allow: /
+
+User-agent: Baiduspider-news
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+User-agent: Sogou Pic Spider
+Allow: /
+
+User-agent: Sogou head spider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI search and training crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# Catch-all
 User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://grindatlas.com/sitemap-index.xml
+Sitemap: https://www.15115656.xyz/sitemap-index.xml

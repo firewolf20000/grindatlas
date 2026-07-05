@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import SEOMeta from '../components/SEOMeta.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import { websiteSchema, organizationSchema } from '../utils/schema';
-import { SITE } from '../utils/seo';
+import { SITE, shouldNoindex, isCanonicalHost } from '../utils/seo';
 
 interface Props {
   title: string;
@@ -20,6 +20,9 @@ const { title, description, canonical, image, type = 'website', noindex = false 
 const fullTitle = title === SITE.name ? title : `${title} | ${SITE.name}`;
 const webSchema = websiteSchema();
 const orgSchema = organizationSchema();
+
+const isPreviewHost = shouldNoindex(Astro.url.host);
+const shouldNoIndexThisPage = noindex || isPreviewHost;
 ---
 <!doctype html>
 <html lang="en">
@@ -31,9 +34,11 @@ const orgSchema = organizationSchema();
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin />
-    <link rel="dns-prefetch" href="https://www.googletagservices.com" />
-    <!-- Google Search Console verification: add <meta name="google-site-verification" content="YOUR_CODE" /> here when you have it -->
-    <SEOMeta title={fullTitle} description={description} image={image} type={type} noindex={noindex} />
+    <link rel="dns-prefetch" href="https://www.googlestagservices.com" />
+    <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname, SITE.url).toString()} />
+    <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname, SITE.url).toString()} />
+    {shouldNoIndexThisPage && <meta name="robots" content="noindex, nofollow" />}
+    <SEOMeta title={fullTitle} description={description} image={image} type={type} noindex={shouldNoIndexThisPage} />
     <script type="application/ld+json" set:html={JSON.stringify(webSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>

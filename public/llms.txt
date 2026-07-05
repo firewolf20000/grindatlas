@@ -1,0 +1,44 @@
+# GrindAtlas
+
+> In-depth guides, tier lists, and interactive tools for idle, incremental, and roguelike games.
+
+GrindAtlas publishes data-driven strategy content and free browser-based tools for two of the most-played genres on the web: idle/incremental games and roguelikes.
+
+## Site structure
+
+- [Home](https://www.15115656.xyz/): Latest guides, interactive tools, and games we cover.
+- [Idle Games](https://www.15115656.xyz/idle-games/): Strategy guides for Cookie Clicker, Universal Paperclips, and other idle games.
+- [Roguelikes](https://www.15115656.xyz/roguelikes/): Tier lists and build guides for Balatro, Hades 2, Slay the Spire 2, and other roguelikes.
+- [Tools](https://www.15115656.xyz/tools/): Free browser-based calculators.
+- [About](https://www.15115656.xyz/about/): Who we are.
+- [Contact](https://www.15115656.xyz/contact/): How to reach us.
+- [RSS Feed](https://www.15115656.xyz/rss.xml): Subscribe to new guides.
+
+## Key guides (idle games)
+
+- [Best Idle Games 2026](https://www.15115656.xyz/idle-games/best-idle-games-2026/)
+- [Cookie Clicker Strategy Guide](https://www.15115656.xyz/idle-games/cookie-clicker-strategy-guide/)
+- [Cookie Clicker Ascension Strategy 2026](https://www.15115656.xyz/idle-games/cookie-clicker-ascension-strategy/)
+- [Universal Paperclips Walkthrough](https://www.15115656.xyz/idle-games/universal-paperclips-walkthrough/)
+
+## Key guides (roguelikes)
+
+- [Best Roguelike and Roguelite Games 2026](https://www.15115656.xyz/roguelikes/best-roguelikes-2026/)
+- [Balatro Joker Tier List 2026](https://www.15115656.xyz/roguelikes/balatro-joker-tier-list/)
+- [Hades 2 Weapon Tier List 2026](https://www.15115656.xyz/roguelikes/hades-2-weapon-tier-list/)
+- [Slay the Spire 2 Best Starter Builds 2026](https://www.15115656.xyz/roguelikes/slay-the-spire-2-starter-builds/)
+
+## Interactive tools
+
+- [Idle Progression Calculator](https://www.15115656.xyz/tools/idle-progression-calculator/)
+- [Cookie Clicker Building Optimizer](https://www.15115656.xyz/tools/cookie-clicker-optimizer/)
+- [Idle Prestige Calculator](https://www.15115656.xyz/tools/idle-prestige-calculator/)
+
+## What this site is NOT
+
+- Not affiliated with any of the game developers mentioned.
+- Not a game aggregator or storefront. We do not sell games.
+
+## Contact
+
+- Email: hello@15115656.xyz
