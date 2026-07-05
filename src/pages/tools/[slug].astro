@@ -2,6 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import IdleCalculator from '../../components/tools/IdleCalculator.tsx';
+import BuildingOptimizer from '../../components/tools/BuildingOptimizer.tsx';
+import PrestigeCalculator from '../../components/tools/PrestigeCalculator.tsx';
 import { softwareAppSchema } from '../../utils/schema';
 import { buildCanonical } from '../../utils/seo';
 
@@ -38,6 +40,8 @@ const swSchema = softwareAppSchema({
 
     <div class="mb-8">
       {tool.data.slug === 'idle-progression-calculator' && <IdleCalculator client:load />}
+      {tool.data.slug === 'cookie-clicker-optimizer' && <BuildingOptimizer client:load />}
+      {tool.data.slug === 'idle-prestige-calculator' && <PrestigeCalculator client:load />}
     </div>
 
     <section class="prose-custom mt-12">

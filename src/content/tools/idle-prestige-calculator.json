@@ -1,0 +1,8 @@
+{
+  "name": "Idle Prestige Calculator",
+  "slug": "idle-prestige-calculator",
+  "description": "Decide when to prestige in any idle game. Compares immediate production against projected post-prestige production to find the optimal reset time.",
+  "category": "calculator",
+  "icon": "♻️",
+  "relatedGames": ["cookie-clicker", "universal-paperclips", "antimatter-dimensions"]
+}

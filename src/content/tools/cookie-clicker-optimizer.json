@@ -1,0 +1,8 @@
+{
+  "name": "Cookie Clicker Building Optimizer",
+  "slug": "cookie-clicker-optimizer",
+  "description": "Find the best Cookie Clicker building to buy next. Compares CpS per cookie cost across all 8 buildings and recommends the optimal purchase order.",
+  "category": "calculator",
+  "icon": "🍪",
+  "relatedGames": ["cookie-clicker"]
+}
