@@ -35,6 +35,18 @@ function slugify(s: string) {
 
   <AdSlot position="top" />
 
+  <section class="container-wide py-12 prose-custom">
+    <h2 class="text-2xl font-bold text-ink-900">What you'll find here</h2>
+    <p class="text-ink-700">
+      GrindAtlas is a focused guide site for two of the most-played genres on the web: idle and roguelike games. We publish long-form strategy articles, data-driven tier lists, and free browser-based tools that help you make better decisions faster. Every guide is fact-checked against the current version of the game, and every tool is built around the real math that runs in your game — not approximations.
+    </p>
+    <p class="text-ink-700">
+      Whether you are a <em>Cookie Clicker</em> player optimizing your Heavenly Chip build, a <em>Balatro</em> player chasing the gold-stake clear, or a <em>Slay the Spire 2</em> player looking for the strongest card combos, we have a guide for you. We also cover smaller indie titles and the roguelike-adjacent deckbuilder scene. New guides go up every week.
+    </p>
+  </section>
+
+  <AdSlot position="middle" />
+
   <section class="container-wide py-12">
     <div class="flex items-end justify-between mb-6">
       <h2 class="text-2xl font-bold">Featured guides</h2>
@@ -51,24 +63,22 @@ function slugify(s: string) {
     </div>
   </section>
 
-  <AdSlot position="middle" />
-
-  <section class="bg-ink-50 py-12">
-    <div class="container-wide">
-      <div class="flex items-end justify-between mb-6">
-        <h2 class="text-2xl font-bold">Interactive tools</h2>
-        <a href="/tools" class="text-sm font-semibold text-brand-700">All tools -&gt;</a>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {tools.map((t) => (
-          <ToolCard name={t.data.name} slug={t.data.slug} description={t.data.description} icon={t.data.icon} />
-        ))}
-      </div>
+  <section class="container-wide py-12">
+    <div class="flex items-end justify-between mb-6">
+      <h2 class="text-2xl font-bold">Interactive tools</h2>
+      <a href="/tools" class="text-sm font-semibold text-brand-700">All tools -&gt;</a>
+    </div>
+    <p class="text-ink-600 mb-6 max-w-2xl">Free browser-based calculators and generators. No signup required, all data stays on your device.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {tools.map((t) => (
+        <ToolCard name={t.data.name} slug={t.data.slug} description={t.data.description} icon={t.data.icon} />
+      ))}
     </div>
   </section>
 
   <section class="container-wide py-12">
     <h2 class="text-2xl font-bold mb-6">Games we cover</h2>
+    <p class="text-ink-600 mb-6 max-w-2xl">We publish in-depth guides and tools for these titles. Click a game to read our coverage.</p>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {games.map((g) => {
         const slug = g.data.slug;

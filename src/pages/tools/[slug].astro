@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import AdSlot from '../../components/AdSlot.astro';
 import IdleCalculator from '../../components/tools/IdleCalculator.tsx';
 import { softwareAppSchema } from '../../utils/schema';
 import { buildCanonical } from '../../utils/seo';
@@ -18,22 +17,51 @@ const swSchema = softwareAppSchema({
   description: tool.data.description,
   url,
 });
+
+// Calculator UI is loaded as a client island for interactivity
+// We intentionally do NOT show AdSense ads on tool pages because
+// interactive calculators are considered "behavioral" content
+// per AdSense Program Policies.
 ---
-<BaseLayout title={tool.data.name} description={tool.data.description} canonical={url}>
+<BaseLayout title={tool.data.name} description={tool.data.description} canonical={url} noindex={false}>
   <div class="container-prose py-10">
-    <nav class="text-sm text-ink-500"><a href="/" class="hover:text-brand-700 no-underline">Home</a> / <a href="/tools" class="hover:text-brand-700 no-underline">Tools</a> / {tool.data.name}</nav>
-    <div class="mt-4 flex items-center gap-3">
+    <nav class="text-sm text-ink-500 mb-4"><a href="/" class="hover:text-brand-700 no-underline">Home</a> / <a href="/tools" class="hover:text-brand-700 no-underline">Tools</a> / {tool.data.name}</nav>
+    <div class="flex items-center gap-3 mb-4">
       <span class="text-4xl">{tool.data.icon}</span>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-ink-900">{tool.data.name}</h1>
     </div>
-    <p class="mt-2 text-ink-600">{tool.data.description}</p>
+    <p class="text-lg text-ink-600 mb-6">{tool.data.description}</p>
+
+    <div class="bg-ink-50 border border-ink-200 rounded-xl p-4 mb-8 text-sm text-ink-700">
+      <strong>How to use:</strong> Choose a calculation mode below, enter your current production rate and target, and the calculator will estimate how long it takes to reach your goal. All math runs locally in your browser — no data is sent to any server.
+    </div>
+
+    <div class="mb-8">
+      {tool.data.slug === 'idle-progression-calculator' && <IdleCalculator client:load />}
+    </div>
+
+    <section class="prose-custom mt-12">
+      <h2>About the {tool.data.name}</h2>
+      <p>
+        The {tool.data.name} is one of several free tools we offer for idle, incremental, and roguelike players. Whether you are optimizing your Cookie Clicker ascension strategy, planning a Universal Paperclips phase transition, or calculating time-to-target in any idle game, this calculator handles the math for you.
+      </p>
+      <h3>What this calculator handles</h3>
+      <ul>
+        <li><strong>Time to target</strong> — how long until you reach a specific resource amount, accounting for compound growth</li>
+        <li><strong>Production rate required</strong> — what CPS you need to reach a goal in a fixed window</li>
+        <li><strong>Growth forecast</strong> — projected total after a given time window with a growth rate</li>
+      </ul>
+      <h3>Tips for accurate results</h3>
+      <ul>
+        <li>Use the highest realistic growth rate for your current game phase</li>
+        <li>Account for any cap on production (some games cap per-second gains)</li>
+        <li>For prestige-heavy games, run the calculator separately for each prestige tier</li>
+      </ul>
+      <h3>More idle game resources</h3>
+      <p>
+        Looking for more idle game strategy? Read our <a href="/idle-games/best-idle-games-2026/">2026 best idle games list</a> or our in-depth <a href="/idle-games/cookie-clicker-strategy-guide/">Cookie Clicker strategy guide</a>. We update our guides and tools weekly with new tips and tools.
+      </p>
+    </section>
   </div>
-  <div class="container-prose pb-4">
-    {tool.data.slug === 'idle-progression-calculator' && <IdleCalculator client:load />}
-    {tool.data.slug !== 'idle-progression-calculator' && (
-      <p class="text-ink-500">Tool component under construction.</p>
-    )}
-  </div>
-  <AdSlot position="bottom" />
   <script type="application/ld+json" set:html={JSON.stringify(swSchema)} />
 </BaseLayout>
