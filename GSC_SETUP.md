@@ -1,109 +1,95 @@
-# Google Search Console 设置指南
+# Webmaster Tools Setup (5 minutes)
 
-## 🎯 目的
+Complete the verification for Google Search Console, Bing Webmaster, and Baidu Webmaster Tools.
 
-让 Google 知道你这个网站存在 → 开始收录 → 给搜索流量
+## Step 1: Get verification codes
 
-## 📋 步骤（5 分钟）
+For each platform, log in, add `https://www.15115656.xyz` as a property, and choose the **HTML meta tag** verification method. Each platform will give you a code like `abc123def456`. Copy each code.
 
-### 1. 注册 Search Console
+| Platform | URL | Notes |
+|---|---|---|
+| **Google Search Console** | https://search.google.com/search-console/ | Use a Google account. Add "URL prefix" type. |
+| **Bing Webmaster** | https://www.bing.com/webmasters/ | Microsoft account. Also covers Copilot/Edge indexing. |
+| **Baidu Webmaster** | https://ziyuan.baidu.com/ | Baidu account. **Required for Chinese search traffic.** |
+| **Yandex Webmaster** | https://webmaster.yandex.com/ | Yandex account. For Russian search traffic (optional). |
 
-打开：https://search.google.com/search-console/
+## Step 2: Paste the codes
 
-用你的 Google 账号登录。
+Open `E:\grindatlas\src\config\verification.ts` and fill in the codes:
 
-### 2. 添加资源
-
-选 **"网址前缀"** (URL prefix) 类型，输入：
-
-```
-https://grindatlas1.pages.dev
-```
-
-（先验证 Cloudflare Pages 提供的域名，暂时不用 grindatlas.com 那个）
-
-点 **"继续"**。
-
-### 3. 验证所有权
-
-Google 给你一个**验证码**，形如：
-
-```
-google-site-verification: abc123def456ghi789
+```ts
+export const VERIFICATION = {
+  google: 'paste_your_google_code_here',   // from Google Search Console
+  bing:   'paste_your_bing_code_here',     // from Bing Webmaster
+  baidu:  'paste_your_baidu_code_here',    // from Baidu Webmaster
+  yandex: 'paste_your_yandex_code_here',   // from Yandex Webmaster (optional)
+} as const;
 ```
 
-**最简单的方式：HTML meta 标签**
+## Step 3: Push to deploy
 
-把这段告诉我，我帮你加到 BaseLayout 的 `<head>` 里。
+```powershell
+cd E:\grindatlas
+git add -A
+git commit -m "Add webmaster verification codes"
+git push origin main
+```
 
-或者你也可以自己加：
-1. 把这行加到 `src/components/SEOMeta.astro` 的 `<head>` 段：
-   ```html
-   <meta name="google-site-verification" content="abc123def456" />
-   ```
-2. `git push`，1 分钟后点 Search Console 的 **"验证"** 按钮
+Wait 1-2 minutes for the deploy to complete.
 
-**其他验证方式**（如不能用 meta 标签）：
-- HTML 文件上传（下载 `google[xxx].html` 放到 `public/` 然后 push）
-- DNS TXT 记录（去域名注册商加）
+## Step 4: Click Verify in each dashboard
 
-### 4. 提交 Sitemap
+Go back to each platform dashboard and click the **Verify** button. The meta tag should now be detected.
 
-验证通过后：
+## Step 5: Submit sitemap
 
-1. 左侧菜单 → **"Sitemaps"**
-2. 输入框填：`https://grindatlas1.pages.dev/sitemap-index.xml`
-3. 点 **"提交"**
+In each dashboard, submit the sitemap URL:
 
-Google 会开始抓取你网站的所有页面。**通常 3-7 天开始有展示，2-4 周开始有 Google 搜索流量**。
+```
+https://www.15115656.xyz/sitemap-index.xml
+```
 
-### 5. 请求索引（可选，加速收录）
+**Google Search Console:**
+1. Left menu -> **Sitemaps**
+2. Paste `https://www.15115656.xyz/sitemap-index.xml` in the "Add a new sitemap" box
+3. Click **Submit**
 
-左侧 → **"网址检查"** → 输入首页 URL `https://grindatlas1.pages.dev/` → 点 **"请求编入索引"**
+**Bing Webmaster:**
+1. Left menu -> **Sitemaps**
+2. Click **Submit a Sitemap**
+3. Paste `https://www.15115656.xyz/sitemap-index.xml`
+4. Click **Submit**
 
-对 3-5 个最重要的页面也这样做：
-- `/idle-games/best-idle-games-2026/`
-- `/idle-games/cookie-clicker-strategy-guide/`
-- `/idle-games/cookie-clicker-ascension-strategy/`
-- `/roguelikes/balatro-joker-tier-list/`
-- `/tools/idle-progression-calculator/`
+**Baidu Webmaster:**
+1. Left menu -> **链接提交** -> **sitemap**
+2. Paste `https://www.15115656.xyz/sitemap-index.xml`
+3. Click **提交**
 
-## 📊 监控
+## Step 6: Request indexing (optional but recommended)
 
-部署后 1 周内可以在 Search Console 看：
+For each platform, manually request indexing of your 3 most important pages:
 
-| 报告 | 关注点 |
-|---|---|
-| Performance | 展示次数、点击次数、平均排名 |
-| Coverage | 哪些页面被收录 / 哪些有错误 |
-| Sitemaps | 已提交的 sitemap 和状态 |
-| Enhancements | FAQ、面包屑、Hreflang 等结构化数据 |
+1. https://www.15115656.xyz/
+2. https://www.15115656.xyz/idle-games/best-idle-games-2026/
+3. https://www.15115656.xyz/roguelikes/balatro-joker-tier-list/
 
-## 🔍 关键词追踪
+**Google**: Use the URL Inspection tool at the top of GSC, paste each URL, click **Request Indexing**.
 
-过 2-4 周后，Search Console 会显示你的网站在 Google 搜索结果中出现的关键词。常见关键词：
+**Bing**: Same process, URL Inspection -> Request Indexing.
 
-- "cookie clicker strategy" (CPC ~$0.8)
-- "best idle games 2026" (CPC ~$1.2)
-- "balatro joker tier list" (CPC ~$0.6)
-- "universal paperclips walkthrough" (CPC ~$0.5)
-- "slay the spire 2 best starter build" (CPC ~$1.0)
+## Alternative: HTML file verification (instead of meta tag)
 
-## ⏱️ 时间线
+If you prefer, each platform also supports verifying by uploading an HTML file. The files are already created in the project as placeholders:
 
-| 时间 | 预期 |
-|---|---|
-| 第 1 天 | sitemap 提交 |
-| 第 3-7 天 | 首页被 Google 索引 |
-| 第 2 周 | 大部分页面被索引 |
-| 第 1 个月 | 每天 10-50 次 Google 搜索展示 |
-| 第 3 个月 | 每天 100-500 次 |
-| 第 6 个月 | 每天 500-5000 次（取决于内容质量） |
+- `public/google[your_code].html` (you rename to your actual code)
+- `public/BingSiteAuth.xml` (Bing's specific format)
+- `public/baidu_verify_xxx.html` (Baidu)
 
-## 🎯 加速索引的技巧
+The actual files will need to be created with the exact filename the platform specifies. If you go this route, ask me to add the file and I'll create it for you.
 
-1. **每周发 2-3 篇新文章**（保持 sitemap 活跃）
-2. **内链做厚**（文章之间互相链接 ✅ 已经做了）
-3. **发外链**：Reddit r/cookieclicker、r/incremental_games、r/balatro 等社区分享你的文章
-4. **在 Steam 创意工坊、Discord 分享**（游戏社区的高质量外链）
-5. **注册 Bing Webmaster Tools**（Bing 流量虽然少，但审核通过后 Google 也会加速）
+## Time expectations
+
+After verification and sitemap submission:
+- **Google**: 3-7 days for first indexing, 2-4 weeks for full indexing
+- **Bing**: 1-3 days for first indexing
+- **Baidu**: 1-2 weeks (slower than Google, but reaches Chinese users)

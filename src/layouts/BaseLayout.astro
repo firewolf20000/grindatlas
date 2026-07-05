@@ -5,7 +5,8 @@ import Footer from '../components/Footer.astro';
 import SEOMeta from '../components/SEOMeta.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import { websiteSchema, organizationSchema } from '../utils/schema';
-import { SITE, shouldNoindex, isCanonicalHost } from '../utils/seo';
+import { SITE, shouldNoindex } from '../utils/seo';
+import { VERIFICATION } from '../config/verification';
 
 interface Props {
   title: string;
@@ -38,6 +39,13 @@ const shouldNoIndexThisPage = noindex || isPreviewHost;
     <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname, SITE.url).toString()} />
     <link rel="alternate" hreflang="x-default" href={new URL(Astro.url.pathname, SITE.url).toString()} />
     {shouldNoIndexThisPage && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Webmaster verification codes (fill in src/config/verification.ts to activate) -->
+    {VERIFICATION.google && <meta name="google-site-verification" content={VERIFICATION.google} />}
+    {VERIFICATION.bing   && <meta name="msvalidate.01" content={VERIFICATION.bing} />}
+    {VERIFICATION.baidu  && <meta name="baidu-site-verification" content={VERIFICATION.baidu} />}
+    {VERIFICATION.yandex && <meta name="yandex-verification" content={VERIFICATION.yandex} />}
+
     <SEOMeta title={fullTitle} description={description} image={image} type={type} noindex={shouldNoIndexThisPage} />
     <script type="application/ld+json" set:html={JSON.stringify(webSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
